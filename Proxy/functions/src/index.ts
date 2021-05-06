@@ -8,7 +8,7 @@ const config =
 	metaWeatherUrl: "https://www.metaweather.com/",
 	corsOptions:
 	{
-		origin: ["*"]
+		origin: "*"
 	}
 }
 
@@ -32,3 +32,8 @@ app.get('*', (req, res) =>
 });
 
 export const api = functions.https.onRequest(app);
+
+// app.listen(8888, ()=>
+// {
+// 	console.log(`listening`)
+// })
