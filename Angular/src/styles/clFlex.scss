@@ -1,0 +1,20 @@
+// https://css-tricks.com/almanac/properties/f/flex/
+
+
+.clHContainer
+{
+display			: flex;
+flex-direction 	: row; 
+};
+
+.clSpacer
+{
+flex: 1 1 auto; 	
+};
+
+.clVContainer
+{
+display			: flex;
+flex-direction : column; 
+};
+

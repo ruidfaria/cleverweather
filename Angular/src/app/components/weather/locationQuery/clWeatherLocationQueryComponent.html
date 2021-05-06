@@ -1,0 +1,46 @@
+
+
+<clHContainer fxWrap fxLayoutAlign="center center" > 
+
+	<clHContainer *ngIf="isBusy" clP="2h" fxFlex>
+		<mat-progress-bar  mode="indeterminate" ></mat-progress-bar>
+	</clHContainer>
+
+	<ng-container *ngIf="hasError">
+		<mat-error>
+			{{errorTitle}}
+		</mat-error>
+	</ng-container>
+
+
+	<ng-container *ngIf="hasData">
+
+		<ng-container *ngIf="data.length>0">
+
+			<clWeatherLocation  *ngFor="let l of data" [location]=l [startDate]="startDate" [endDate]="endDate">
+			</clWeatherLocation>
+
+		</ng-container>
+
+		<ng-container *ngIf="!data.length">
+
+			<h1> 
+				no {{location}} found
+			</h1>
+
+		</ng-container>
+
+	</ng-container>
+
+</clHContainer>
+
+<clDebug>
+	<div>isBusy			:{{isBusy}}</div>
+	<div>location		:{{location}}</div>
+	<div>currentLocation:{{currentLocation}}</div>
+	<div>locations		:{{data|json}}</div>
+	<div>lastError		:{{lastError|json}}</div>
+</clDebug>
+
+
+

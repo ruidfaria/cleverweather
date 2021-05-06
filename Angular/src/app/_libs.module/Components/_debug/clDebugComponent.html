@@ -1,0 +1,26 @@
+
+<clVContainer *ngIf="debugMode" kCursor="p" [matMenuTriggerFor]="details">
+	|D|
+</clVContainer>
+
+<ng-template #content>
+	
+	<clVContainer fxFlexFill fxLayoutAlign="space-evenly center">
+
+	</clVContainer>
+
+</ng-template>
+
+ <mat-menu #details="matMenu"  yPosition="above" overlapTrigger="true">
+
+	<ng-template matMenuContent>
+
+		<clVContainer>
+			<h1>DEBUG:</h1>
+			<ng-content></ng-content>
+
+		</clVContainer>
+
+	</ng-template>
+
+</mat-menu>

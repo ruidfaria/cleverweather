@@ -1,0 +1,40 @@
+
+<clVContainer clP=0.2 >
+	<clVContainer clSizeFix="10,20" clOverflow="h" (clVisibleObserver)="onVisible()">
+
+		<clHContainer clBC="#C3C3C3" clC="#28466b" fxLayoutAlign="center center" clH="2">
+			<strong>
+				{{dateTitle}}
+			</strong>
+		</clHContainer>
+
+		<div clH="18" clBC="#efefef" clW="100%" >
+
+			<ng-container *ngIf="hasWeather">
+
+				<clWeatherDay clW="100%"	*ngIf="weather" [weather]=weather>
+				</clWeatherDay>
+
+				<!--
+					TODO:no weather message
+				-->
+			</ng-container>
+
+			<clVContainer *ngIf="hasError" 		fxLayoutAlign="center center">
+
+				<mat-error>
+					{{errorTitle}}
+				</mat-error>
+
+			</clVContainer>
+
+			<clVContainer *ngIf="isBusy"	 	fxLayoutAlign="center center" clOpacity="0.1" clH="18">
+				<mat-spinner [diameter]=100>
+				</mat-spinner>
+			</clVContainer>
+
+		</div>
+
+	</clVContainer>
+
+</clVContainer>

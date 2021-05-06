@@ -1,0 +1,13 @@
+<clVContainer>
+
+	<mat-select [(value)]="input" [disabled]="disabled">
+
+		<ng-container *ngFor="let i of items">
+			<mat-option [value]="i.id">
+				{{i.text}}
+			</mat-option>
+		</ng-container>
+
+	</mat-select>
+
+</clVContainer>

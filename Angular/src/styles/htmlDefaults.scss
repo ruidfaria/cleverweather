@@ -1,0 +1,24 @@
+
+*{
+	margin:0;
+	padding:0;
+	border:0;
+	box-sizing: border-box;
+	outline: none;
+}
+
+HTML,BODY
+{
+	height: 100%;
+}
+
+p
+{
+	word-break: break-word!important;	
+	white-space: pre-line!important;
+}
+
+body
+{
+    overflow: hidden;
+}

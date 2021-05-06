@@ -1,0 +1,19 @@
+
+@import "./themes/default.scss";
+
+//@import "./typography/typography.scss";
+
+@import	"./htmlDefaults.scss";
+
+@import	"./clFlex.scss";
+
+
+router-outlet + * 
+{
+width			:100%;
+min-height		:100%;
+display			: flex;
+flex-direction	: column; 
+
+}
+

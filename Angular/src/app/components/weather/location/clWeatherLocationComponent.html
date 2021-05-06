@@ -1,0 +1,24 @@
+
+<clVContainer>
+	<h1>
+		{{location.title}},{{location.location_type}}
+	</h1>
+
+	<ng-container *ngFor="let w of weeks">
+
+		<clHContainer clP=0.5 fxWrap fxLayoutAlign="center center" > 
+
+			<ng-container *ngFor="let d of w">
+
+				<clWeatherDayQuery [location]="location" [date]="d">
+				</clWeatherDayQuery>
+
+			</ng-container>
+
+		</clHContainer>
+
+	</ng-container>
+
+
+</clVContainer>
+	

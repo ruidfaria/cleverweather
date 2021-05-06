@@ -1,0 +1,67 @@
+
+<form autocomplete="off" spellcheck="false" clHFix="100vh" clOverflow="ya">
+
+	<clHContainer clP=0.5 fxWrap fxLayoutAlign="center center" > 
+
+		<mat-form-field clP="0.5l ">
+
+			<mat-label>date</mat-label>
+			
+			<!-- TODO: DISABLE NOT ALLOWED DATES-->
+			<input matInput [matDatepicker]="datepicker" [(ngModel)]="date" name="dateInput">
+
+				<mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+
+				<mat-datepicker #datepicker>
+				</mat-datepicker>
+
+		</mat-form-field>
+
+
+		<mat-form-field clP="0.5l" clW="15m">
+
+		    <input matInput placeholder="location" [(ngModel)]="location"	name="locationInput">
+<!--
+			<clTableInput 	[items]="_locationsTable.items"	placeholder="location" 			[(ngModel)]="location"	name="locationInput" 	></clTableInput>
+-->
+
+		</mat-form-field>
+
+
+		<mat-form-field clP="0.5l" clW="15m" >
+
+			<clTableInput 	[items]="weeksCombo"			placeholder="view" 				[(ngModel)]="weeks"		name="weeksInput"		></clTableInput>
+
+		</mat-form-field>
+
+
+	</clHContainer>
+
+	<clWeatherLocationQuery [startDate]="startDate" [endDate]="endDate" [location]="locationValue">
+	</clWeatherLocationQuery>
+
+
+</form>
+
+<!--
+<ng-template clStringTable #locationsTable>
+
+	<div id="lisbon"		>lisboa		</div>
+	<div id="porto"			>porto		</div>
+	<div id="coimbra"		>coimbra	</div>
+	<div id="funchal"		>funchal	</div>
+
+</ng-template>
+-->
+
+<ng-template clStringTable #weeksTable>
+
+	<div id="1"				>one week		</div>
+	<div id="2"				>two weeks		</div>
+	<div id="4"				>month			</div>
+	<div id="12"			>quarter		</div>
+
+</ng-template>
+
+
+

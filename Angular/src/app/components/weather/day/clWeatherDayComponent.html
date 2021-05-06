@@ -1,0 +1,58 @@
+
+<clVContainer clW="100%">
+
+	<!-- STATE ICON -->
+
+	<clHContainer clH="5" fxLayoutAlign="center center" >
+
+		<div clSize="4,4" [clImage]="stateIconUrl">
+		</div>
+
+	</clHContainer>
+
+	<!-- MIN & MAX TEMPERATURES -->
+
+	<clHContainer clH="4" fxLayoutAlign="center center" >
+
+		<clHContainer>
+			<clHContainer clSize="3.5,2" clBC="#0080b0" fxLayoutAlign="center center">
+				{{minTemp}}
+			</clHContainer>
+
+			<div clP=0.3></div>
+
+			<clHContainer clSize="3.5,2" clBC="#ffa000" fxLayoutAlign="center center">
+				{{maxTemp}}
+
+			</clHContainer>
+		</clHContainer>
+
+	</clHContainer>
+
+	<!-- WIND ORIENTATION  -->
+
+	<clHContainer clH="4.5" fxLayoutAlign="center center" >
+
+		<div clSize="4,4" [clImage]="windIconUrl">
+		</div>
+
+	</clHContainer>
+
+	<!-- WIND ORIENTATION TEXT -->
+
+	<clHContainer clH="2" fxLayoutAlign="center center" >
+
+		{{windText}}
+
+	</clHContainer>
+
+	<!-- HUMIDITY TEXT -->
+
+	<clHContainer clH="2" fxLayoutAlign="center center" >
+
+		{{humidityText}}
+
+	</clHContainer>
+
+</clVContainer>
+
