@@ -1,8 +1,10 @@
-cd cleverAPI
-call firebase deploy
+cd Proxy
+rem tsc
+rem call firebase deploy
 
 cd ..
-cd cleverWeather
+cd Angular
+call ng build --prod
 call firebase deploy
 
 cd ..
