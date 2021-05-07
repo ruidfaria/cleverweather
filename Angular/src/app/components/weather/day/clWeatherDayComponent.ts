@@ -76,7 +76,7 @@ get windText	():string
 
 get humidityText():string
 {
-const h=Math.floor(this.weather.humidity+.5).toString()+"%";
+const h=Math.ceil(this.weather.humidity+.5).toString()+"%";
 				return(h)
 }
 
