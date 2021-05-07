@@ -25,7 +25,8 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles/styles.scss"
@@ -49,7 +50,7 @@
               "vendorChunk": false,
               "buildOptimizer": true,
 			  "serviceWorker": true,
-			  "ngswConfigPath": "src/ngsw-config.json",
+			  "ngswConfigPath": "ngsw-config.json",
               "budgets": [
                 {
                   "type": "initial",
@@ -91,7 +92,8 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles/styles.scss"
