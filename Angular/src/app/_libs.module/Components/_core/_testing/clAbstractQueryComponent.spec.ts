@@ -13,7 +13,6 @@ let cdr			:Testing.ChangeDetectorRefStub;
 			beforeEach(async ()=>
 			{	
 				cdr			=new Testing.ChangeDetectorRefStub	();
-				console.log("CDR",cdr)
 				component	=new clAbstractQueryComponent		<Testing.Data[]>(cdr);
 
 			});
@@ -23,7 +22,6 @@ let cdr			:Testing.ChangeDetectorRefStub;
 				await expect(component.isBusy	).toBeFalsy();
 			});
 
-
 			it("onCreate,hasData shold by falsy"	,async ()=>
 			{
 				await expect(component.hasData	).toBeFalsy();
@@ -32,6 +30,11 @@ let cdr			:Testing.ChangeDetectorRefStub;
 			it("onCreate,hasError shold by falsy"	,async ()=>
 			{
 				await expect(component.hasError	).toBeFalsy();
+			});
+
+			it("onCreate,busyCounter shold by 0"	,async ()=>
+			{
+				await expect(component.busyCounter	).toBe(0);
 			});
 
 
@@ -55,7 +58,7 @@ let cdr			:Testing.ChangeDetectorRefStub;
 				await expect(component.data).toBe(data);
 			});
 
-			it("onError,should update Error"	,async ()=>
+			it("onError,should update Error"		,async ()=>
 			{
 			const error=Testing.ErrorInstance();
 				component.onError(error);
@@ -64,13 +67,32 @@ let cdr			:Testing.ChangeDetectorRefStub;
 			});
 
 
-			it("valid query,should call onData"	,async ()=>
+			it("valid query,should call onData"		,async ()=>
 			{
 				spyOn(component,"onData");
 
 				component.queryData(RX.of(Testing.DataInstance()));
 
 				await expect(component.onData).toHaveBeenCalled();
+
+			});
+
+
+			it("query,should increment busyCounter"	,async ()=>
+			{
+				component.queryData(RX.throwError(Testing.ErrorInstance()));
+
+				await expect(component.busyCounter).toBe(1);
+			});
+
+
+			it("error query,should call onError"	,async ()=>
+			{
+				spyOn(component,"onError");
+
+				component.queryData(RX.throwError(Testing.ErrorInstance()));
+
+				await expect(component.onError).toHaveBeenCalled();
 
 			});
 
@@ -83,7 +105,6 @@ let cdr			:Testing.ChangeDetectorRefStub;
 				await expect(component.onError).toHaveBeenCalled();
 
 			});
-
 
 
 });

@@ -1,6 +1,6 @@
 import	{	ChangeDetectorRef			}	from	"@angular/core"
-
-
+import		* as Contents					from	"./contents/Contents"
+export	{	Contents					}
 export	interface Data
 {
 id		:number	;

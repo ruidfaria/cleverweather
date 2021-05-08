@@ -3,10 +3,11 @@ import	{	Type					}	from 	'@angular/core'
 import	{	ComponentFixture		,
 			TestBed					}	from	'@angular/core/testing'
 
-export	function	clContainerTest<T>(c:Type<any>)
+export	function	clEmptyComponentTest<T>(c:Type<any>,imports:any[]=[])
 {
 let 	fixture		:ComponentFixture<T>	;
 let		component	:T						;
+let 	native		:HTMLElement			;
 
 
 		beforeEach(async () => 
@@ -14,14 +15,16 @@ let		component	:T						;
 		await 	TestBed.configureTestingModule(
 			{
 			imports	:		[
+							...imports
 							],
 			declarations:	[
 							c
 							],
 			}).compileComponents();
 
-			fixture 	= TestBed.createComponent(c);
-			component	= fixture.componentInstance;
+			fixture 	= TestBed.createComponent(c)			;
+			component	= fixture.componentInstance				;
+ 			native		= fixture.debugElement.nativeElement	;
 		});
 
 		it('should create the component', () => 
@@ -29,14 +32,15 @@ let		component	:T						;
 			expect(component).toBeTruthy();
 		});
 
-		it('template should have empty content', () => 
+		it('template should have native element'	, () => 
 		{
- 		const ne: HTMLElement = fixture.debugElement.nativeElement;
-
-			expect(ne).toBeTruthy();
-			expect(ne.innerHTML).toBe("");
+			expect(native).toBeTruthy();
 		});
 
 
+		it('template should have empty content', () => 
+		{
+			expect(native.innerHTML).toBe("");
+		});
 }
 

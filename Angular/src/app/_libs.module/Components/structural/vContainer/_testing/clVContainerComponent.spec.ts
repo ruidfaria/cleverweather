@@ -1,7 +1,7 @@
-import	{	clContainerTest 		}	from '../../_core/_testing/clContainerTesting';
-import	{	clVContainerComponent	}	 from	'../clVContainerComponent'
+import	{	Testing 		}	from 	"../../../../Helpers/_testing/Testing"
+import	{	clVContainerComponent	}	from	'../clVContainerComponent'
 
 describe('clHContainerComponent', () => 
 {
-		clContainerTest<clVContainerComponent>(clVContainerComponent);
+		Testing.Contents.MustByEmpty<clVContainerComponent>(clVContainerComponent);
 });
