@@ -56,7 +56,7 @@ const 	url	=["location",location.woeid,yr,m,d].join("/");
 
 static			stateIconUrl	(info:Interfaces.WeatherInfo)
 {
-const 			stateSvg="weather/"+info.weather_state_abbr+".svg";
+const 			stateSvg="weather/"+info?.weather_state_abbr+".svg";
 				return(staticImage(stateSvg));
 }
 

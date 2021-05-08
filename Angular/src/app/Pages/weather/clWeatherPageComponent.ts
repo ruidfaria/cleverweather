@@ -46,11 +46,12 @@ constructor		(private cdr:ChangeDetectorRef)
 
 filterWeeks		()
 {
-const dmin	=DateTime.fromJSDate(this.startDate	);
-const dmax	=DateTime.fromJSDate(this.maxDate	);
-const mw	=dmax.diff(dmin,["days"]).days/7;
+const 	dmin	=DateTime.fromJSDate(this.startDate	);
+const 	dmax	=DateTime.fromJSDate(this.maxDate	);
+const 	mw		=dmax.diff(dmin,["days"]).days/7	;
+const	items	=this._weeksTable?.items||[];
 
-			this.weeksCombo=this._weeksTable.items.filter(i=>parseInt(i.id)<=mw);
+			this.weeksCombo=items.filter(i=>parseInt(i.id)<=mw);
 }
 
 onDateChanged	()

@@ -42,3 +42,26 @@ const 	d:Data[]=[];
 
 		return(d);
 }
+
+export	function	DataAddPrefix	(prefix:string,data:any):any
+{
+const 	d:any={};
+const 	keys=Object.keys(data);
+		for(const k of keys)
+		{
+			d[prefix+"."+k]=data[k];
+		}
+		return(d);
+}
+
+export	function	sleep(time:number):Promise<void>
+{
+const p	=new Promise<void>((resolve,reject)=>
+			{
+				setTimeout(()=>
+				{
+					resolve();
+				},time);
+			});
+		return(p);
+}

@@ -4,7 +4,11 @@ import	{	Directive, ElementRef, Input, OnInit, OnChanges, Renderer2	}	from 	'@an
 
 function	url(image:string)
 {
-			return("url("+image+")");
+const u="url("+image+")";
+
+			//console.info("utlImage:",u)
+
+			return(u);
 }
 
 @Directive

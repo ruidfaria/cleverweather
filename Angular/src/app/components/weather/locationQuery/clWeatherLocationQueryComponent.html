@@ -34,13 +34,11 @@
 
 </clHContainer>
 
+
 <clDebug>
-	<div>isBusy			:{{isBusy}}</div>
-	<div>location		:{{location}}</div>
-	<div>currentLocation:{{currentLocation}}</div>
-	<div>locations		:{{data|json}}</div>
-	<div>lastError		:{{lastError|json}}</div>
+	<div					>isBusy			:{{isBusy}}</div>
+	<div *ngIf="location"	>location		:{{location}}</div>
+	<div					>currentLocation:{{currentLocation}}</div>
+	<div *ngIf="data"		>locations		:{{data|json}}</div>
+	<div *ngIf="lastError"	>lastError		:{{lastError|json}}</div>
 </clDebug>
-
-
-

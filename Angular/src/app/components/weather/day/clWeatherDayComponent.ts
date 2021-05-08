@@ -36,8 +36,7 @@ changeDetection	:ChangeDetectionStrategy.OnPush	,
 export class	clWeatherDayComponent	extends	clAbstractComponent
 {
 @Input		()		weather		:WeatherInterfaces.WeatherInfo;
-
-constructor		(private cdr:ChangeDetectorRef)
+constructor		()
 { 
 				super();
 }
@@ -50,12 +49,12 @@ get stateIconUrl():string
 
 get minTemp		():string
 {
-				return(formatTemp(this.weather.min_temp))
+				return(formatTemp(this.weather?.min_temp))
 }
 
 get maxTemp		():string
 {
-				return(formatTemp(this.weather.max_temp))
+				return(formatTemp(this.weather?.max_temp))
 }
 
 
@@ -65,18 +64,18 @@ get maxTemp		():string
 
 get windIconUrl():string
 {
-const compassUrl="compass/"+normalizeCompass(this.weather.wind_direction_compass)+".svg"
+const compassUrl="compass/"+normalizeCompass(this.weather?.wind_direction_compass||"")+".svg"
 				return(assetsFile(compassUrl));
 }
 
 get windText	():string
 {
-				return(this.weather.wind_direction_compass);
+				return(this.weather?.wind_direction_compass);
 }
 
 get humidityText():string
 {
-const h=Math.ceil(this.weather.humidity+.5).toString()+"%";
+const h=Math.ceil(this.weather?.humidity||0+.5).toString()+"%";
 				return(h)
 }
 

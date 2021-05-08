@@ -28,7 +28,7 @@ export class	clWeatherLocationQueryComponent	extends	clAbstractQueryComponent<We
 				currentLocation	:string								;
 				queryLocation	:string								;
 
-constructor		(cdr:ChangeDetectorRef,private ws:clWeatherService)
+constructor		(cdr:ChangeDetectorRef,public ws:clWeatherService)
 { 
 				super(cdr);
 }
