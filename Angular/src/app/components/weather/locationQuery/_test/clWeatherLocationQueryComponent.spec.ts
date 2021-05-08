@@ -14,6 +14,7 @@ import	{	clWeatherService				}	from	"../../../../services/weather/clWeatherServi
 import	{	clWeatherDayComponent			}	from	"../../day/clWeatherDayComponent"
 import	{	clWeatherLocationQueryComponent	}	from	'../clWeatherLocationQueryComponent'
 import	{	clDebugComponent				}	from	"../../../../_libs.module/Components/_debug/clDebugComponent"
+import { ChangeDetectionStrategy } from "@angular/core"
 
 
 describe('clWeatherLocationQueryComponent.render', () => 
@@ -27,12 +28,13 @@ isBusy					:true						,
 		Testing.Contents.MustReactToChanges<clWeatherLocationQueryComponent>
 					(
 						clWeatherLocationQueryComponent																							,
-						{location:{}}																											,
+						{location:""}																											,
 						testData																												,
 						[clWeatherDayComponent,clHContainerComponent,clVContainerComponent,MatProgressBar,clDebugComponent,MatMenu,MatError]	,
 						[clWeatherService,HttpClient,HttpHandler]
 					);
 });
+
 
 describe('clWeatherLocationQueryComponent.query', () => 
 {
@@ -48,22 +50,23 @@ let 	native		:HTMLElement											;
 			imports	:		[
 							],
 			declarations:	[
-							clWeatherDayComponent,clHContainerComponent,clVContainerComponent,MatProgressBar,clDebugComponent,MatMenu,MatError
+							clWeatherLocationQueryComponent,clWeatherDayComponent,clHContainerComponent,clVContainerComponent,MatProgressBar,clDebugComponent,MatMenu,MatError
 							],
 			providers:		[
-							clWeatherService,HttpClient,HttpHandler,JsonPipe
+							clWeatherService,HttpClient,HttpHandler
 							]
 			}).compileComponents();
 
 			fixture 			= TestBed.createComponent(clWeatherLocationQueryComponent)		;
 			component			= fixture.componentInstance										;
-			component.location	={} as any														;
+			component.location	="lisbon"														;
  			native				= fixture.debugElement.nativeElement							;
+			fixture.detectChanges();
 		});
-
 
 		it('ngOnChanges must call service queryLocations', async () => 
 		{
+
 			spyOn(component.ws,"queryLocations").and.callFake(()=>{console.info("queryLocations.called");return(RX.of([]))});
 
 			component.ngOnInit		();// subscribe  timer 
@@ -72,9 +75,8 @@ let 	native		:HTMLElement											;
 			await Testing.sleep(1500);// refreshTimer	=new Helpers.Timer(1000);
 
 			await expect(component.ws.queryLocations).toHaveBeenCalled();
+
 		});
 
 
 });
-
-

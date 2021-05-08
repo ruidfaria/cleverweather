@@ -51,7 +51,10 @@ onData			(lx:WeatherInterfaces.WeatherLocation[])
 onQueryLocation	()
 {
 				this.queryLocation=this.currentLocation;
-				this.queryData(this.ws.queryLocations(this.currentLocation));
+				if(this.currentLocation.length)
+				{
+					this.queryData(this.ws.queryLocations(this.currentLocation));
+				}
 }
 
 ngOnChanges		()

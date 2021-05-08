@@ -23,7 +23,10 @@ const testData:any		=
 		Testing.Contents.MustReactToChanges<clWeatherLocationComponent>
 				(
 					clWeatherLocationComponent																				,
-					{}																										,
+					{
+					startDate	:new Date()																					,
+					endDate		:new Date()																					,
+					location:{}}																							,
 					testData																								,
 					[clWeatherDayQueryComponent,clImageDirective,clHContainerComponent,clVContainerComponent,MatSpinner]	,
 					[clWeatherService,HttpClient,HttpHandler]																,

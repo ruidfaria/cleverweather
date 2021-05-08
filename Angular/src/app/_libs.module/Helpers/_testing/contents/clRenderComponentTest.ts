@@ -4,14 +4,20 @@ import	{	ComponentFixture		,
 			TestBed					}	from	'@angular/core/testing'
 import	{	clVerifyContentChanges	}	from	"./clVerifyContentChanges"
 
-function	setInitialData<T>	(component	:T,d:any)
+function	setInitialData		(component	:any,d:any)
 {
 const kx	=Object.keys(d);
 			for(const k of kx)
 			{
 				component[k]=d[k];
 			}
+
+			if(component.ngOnChanges)
+			{
+				component.ngOnChanges();
+			}
 }
+
 export	function	clRenderComponentTest<T>(c:Type<any>,initialData:any,contents:any,declarations:any[]=[],providers:any[]=[],imports:any[]=[],schemas:any[]=[])
 {
 let 	fixture		:ComponentFixture<T>	;
@@ -46,7 +52,9 @@ let 	native		:HTMLElement			;
 			fixture 	= TestBed.createComponent(c)			;
 			component	= fixture.componentInstance				;
  			native		= fixture.debugElement.nativeElement	;
-			setInitialData	(component,initialData||{});
+			setInitialData	(component,initialData||{})			;
+			
+
 		});
 
 		it('should create the component', () => 
