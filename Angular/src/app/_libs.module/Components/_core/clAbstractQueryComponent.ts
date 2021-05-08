@@ -7,11 +7,12 @@ import	{	Helpers					}			from	"../../../_libs.module/Helpers/Helpers"
 import	{	clAbstractComponent		}			from	"./clAbstractComponent"
 
 @Directive()
-export class	clAbstractQueryComponent<T>	extends	clAbstractComponent	implements	OnDestroy
+export class	clAbstractQueryComponent<T>	extends	clAbstractComponent
 {
 lastError		:Error	;
 data			:T		;
-isBusy			:boolean										;
+isBusy			:boolean;
+busyCounter		:number=0;// for testing
 
 constructor		(protected cdr:ChangeDetectorRef)
 { 
@@ -49,6 +50,7 @@ onData			(d:T)
 
 queryData		(o:RX.Observable<T>)
 {
+				this.busyCounter++;
 				this.isBusy		=true;
 				super.subscribe(o,d=>this.onData(d),e=>this.onError(e));
 				this.cdr.markForCheck();

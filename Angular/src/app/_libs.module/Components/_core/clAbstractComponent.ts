@@ -11,7 +11,7 @@ ngOnDestroy			()
 					// 2021.05.05
 					// RF:
 					// never forget to unsubscribe observables
-					super.unsubscribeAll();
+					this.unsubscribeAll();
 }
 
 }

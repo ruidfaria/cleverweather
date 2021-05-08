@@ -1,35 +1,47 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
+import	{	ComponentFixture		,
+			TestBed					}	from	'@angular/core/testing'
+import { By } from '@angular/platform-browser';
+import { RouterOutlet } from '@angular/router';
 
-describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  });
+import	{	RouterTestingModule		}	from	'@angular/router/testing'
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+import	{	AppComponent			}	 from	'./app.component'
 
-  it(`should have as title 'metaWeatherApi'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('metaWeatherApi');
-  });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('metaWeatherApi app is running!');
-  });
+describe('AppComponent', () => 
+{
+let 	fixture		:ComponentFixture<AppComponent>	;
+let		component	:AppComponent					;
+
+
+		beforeEach(async () => 
+		{
+		await 	TestBed.configureTestingModule(
+			{
+			imports	:		[
+							RouterTestingModule
+							],
+			declarations:	[
+							AppComponent
+							],
+			}).compileComponents();
+
+			fixture 	= TestBed.createComponent(AppComponent);
+			component	= fixture.componentInstance;
+
+
+		});
+
+		it('should create the component', () => 
+		{
+			expect(component).toBeTruthy();
+		});
+
+		it('template should have router-outlet', () => 
+		{
+		const ro=fixture.debugElement.query(By.directive(RouterOutlet));
+			expect(ro).toBeTruthy();
+		});
+
+
 });
