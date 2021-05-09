@@ -54,13 +54,19 @@ table	:{[id:string]:string}		={}
 constructor	(private template: TemplateRef<any>) 
 { 
 }
-ngOnInit	()
+
+extractItems()
 {
 			this.items=extractItems(this.template);
 			for(const i of this.items)
 			{
 				this.table[i.id]=i.text;
 			}
+}
+
+ngOnInit	()
+{
+			this.extractItems();
 }
 
 }

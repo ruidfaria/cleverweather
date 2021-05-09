@@ -1,3 +1,5 @@
+import	{	ComponentFixture, TestBed		}	from	"@angular/core/testing"
+
 import	{	HttpClient, HttpHandler			}	from	"@angular/common/http"
 
 import	{	BrowserAnimationsModule			}	from	"@angular/platform-browser/animations"
@@ -27,7 +29,7 @@ import	{	clWeatherPageComponent			}	from	'../clWeatherPageComponent'
 
 
 
-describe('clWeatherPageComponent', () => 
+describe('clWeatherPageComponent.render', () => 
 {
 const testData:any		=
 {
@@ -59,16 +61,71 @@ const testData:any		=
 						MatSelectModule			,
 						MatCommonModule			,
 						MatNativeDateModule		,
-
-/*
-						MatRippleModule			,
-						MatSelectModule			,
-						MatCardModule			,
-						MatProgressSpinnerModule,
-						MatProgressBarModule	,
-						MatMenuModule			,
-*/
 					]
 				);
 });
-// MatDatepicker,MatLabel,MatDatepickerToggle,MatDialog
+
+describe('clWeatherLocationQueryComponent.setsAndGets', () => 
+{
+let 	fixture		:ComponentFixture<clWeatherPageComponent>				;
+let		component	:clWeatherPageComponent									;
+let 	native		:HTMLElement											;
+
+		beforeEach(async () => 
+		{
+		await 	TestBed.configureTestingModule(
+			{
+			imports	:		[
+							BrowserModule			,
+							BrowserAnimationsModule	,
+							FormsModule				,
+							MatInputModule			,
+							MatDialogModule			,
+							MatFormFieldModule		,
+							MatDatepickerModule		,
+							MatMenuModule			,
+							MatSelectModule			,
+							MatCommonModule			,
+							MatNativeDateModule		,
+							],
+			declarations:	[
+							clWeatherPageComponent,clWeatherLocationQueryComponent,clHContainerComponent,clVContainerComponent,clTableInputComponent,clDebugComponent,
+							],
+			providers:		[
+							clWeatherService,HttpClient,HttpHandler
+							]
+			}).compileComponents();
+
+			fixture 			= TestBed.createComponent(clWeatherPageComponent)				;
+			component			= fixture.componentInstance										;
+			native				= fixture.debugElement.nativeElement							;
+			fixture.detectChanges();
+		});
+
+
+		it('must update date', async () => 
+		{
+		const d=new Date();
+			component.date=d;
+			await expect(component.date).toBe(d);
+
+		});
+
+		it('must update location', async () => 
+		{
+		const l="location"
+			component.location=l;
+			await expect(component.location).toBe(l);
+
+		});
+
+		it('must update weeks', async () => 
+		{
+		const w="12"
+			component.weeks=w;
+			await expect(component.weeks).toBe(w);
+
+		});
+
+
+});

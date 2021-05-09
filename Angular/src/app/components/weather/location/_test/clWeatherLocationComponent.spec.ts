@@ -24,9 +24,10 @@ const testData:any		=
 				(
 					clWeatherLocationComponent																				,
 					{
-					startDate	:new Date()																					,
-					endDate		:new Date()																					,
-					location:{}}																							,
+					startDate	:new Date("2000-01-01"),
+					endDate		:new Date("2000-05-01"),
+					location	:{}
+					}																										,
 					testData																								,
 					[clWeatherDayQueryComponent,clImageDirective,clHContainerComponent,clVContainerComponent,MatSpinner]	,
 					[clWeatherService,HttpClient,HttpHandler]																,

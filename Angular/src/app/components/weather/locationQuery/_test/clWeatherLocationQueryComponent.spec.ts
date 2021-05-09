@@ -59,16 +59,15 @@ let 	native		:HTMLElement											;
 
 			fixture 			= TestBed.createComponent(clWeatherLocationQueryComponent)		;
 			component			= fixture.componentInstance										;
-			component.location	="lisbon"														;
  			native				= fixture.debugElement.nativeElement							;
 			fixture.detectChanges();
 		});
 
 		it('ngOnChanges must call service queryLocations', async () => 
 		{
-
 			spyOn(component.ws,"queryLocations").and.callFake(()=>{console.info("queryLocations.called");return(RX.of([]))});
 
+			component.location		="lisbon"														;
 			component.ngOnInit		();// subscribe  timer 
 			component.ngOnChanges	();
 
